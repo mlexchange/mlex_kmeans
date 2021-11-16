@@ -7,12 +7,12 @@ To get started, you will need:
   - [Docker](https://docs.docker.com/get-docker/)
 
 ## Running
-First, build the segMSDnet image in terminal:
+First, build the segMSDnet image in terminal:   
 `cd mlex_kmeans`    
 `make build_docker`
 
-Once built, you can run the following examples:
-`make train_example`
+Once built, you can run the following examples: 
+`make train_example`    
 `make test_example`
 
 Note: Unlike the supervised model, K-Means doesn't require feature generation since it's a unsupervised model.
