@@ -11,7 +11,7 @@ First, build the segMSDnet image in terminal:
 `cd mlex_kmeans`    
 `make build_docker`
 
-Once built, you can run the following examples: 
+Once built, you can run the following examples:     
 `make train_example`    
 `make test_example`
 
