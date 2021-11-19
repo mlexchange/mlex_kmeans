@@ -1,3 +1,4 @@
+pydantic
 Pillow
 joblib
 imageio
