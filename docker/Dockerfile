@@ -20,4 +20,5 @@ ENV PYTHONBUFFERED=1
 
 COPY kmeans.py kmeans.py
 COPY segment.py segment.py
+COPY model_validation.py model_validation.py
 CMD ["echo", "running kmeans"]

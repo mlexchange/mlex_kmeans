@@ -23,10 +23,10 @@ run_docker:
 	docker run --shm-size=1g --ulimit memlock=-1 --ulimit stack=67108864 --memory-swap -1 -it -v ${PWD}:/app/work/ -v ${PWD}/../data:/app/data -p 8055:8055 ${IMG_WEB_SVC}
 
 train_example:
-	docker run -u ${ID_USER $USER}:${ID_GROUP $USER} --shm-size=1g --ulimit memlock=-1 --ulimit stack=67108864 --memory-swap -1 -it -v ${PWD}:/app/work/ ${IMG_WEB_SVC} python kmeans.py data/images/segment_series.tif data/model data/model/parameters.json
+	docker run -u ${ID_USER $USER}:${ID_GROUP $USER} --shm-size=1g --ulimit memlock=-1 --ulimit stack=67108864 --memory-swap -1 -it -v ${PWD}:/app/work/ ${IMG_WEB_SVC} python kmeans.py data/images/segment_series.tif data/model '{"n_clusters":2, "max_iter":300}'
 
 test_example:
-	docker run -u ${ID_USER $USER}:${ID_GROUP $USER} --shm-size=1g --ulimit memlock=-1 --ulimit stack=67108864 --memory-swap -1 -it -v ${PWD}:/app/work/ ${IMG_WEB_SVC} python segment.py data/images/segment_series.tif data/model/kmeans.joblib data/output
+	docker run -u ${ID_USER $USER}:${ID_GROUP $USER} --shm-size=1g --ulimit memlock=-1 --ulimit stack=67108864 --memory-swap -1 -it -v ${PWD}:/app/work/ ${IMG_WEB_SVC} python segment.py data/images/segment_series.tif data/model/kmeans.joblib data/output '{"show_progress": 20}'
 
 push_docker:
 	docker push ${IMG_WEB_SVC}
