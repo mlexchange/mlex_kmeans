@@ -35,7 +35,6 @@ if __name__ == '__main__':
     
     for index, out in enumerate(outputs):
         if index % parameters.show_progress == 0:
-            out += 1
             output_f_name = output_dir / '{}-.dat'.format(index)
             np.savetxt(str(output_f_name), out)
             imageio.imsave(str(output_dir / '{}-classified.tif'.format(index)), out)
