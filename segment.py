@@ -26,7 +26,10 @@ if __name__ == '__main__':
 
     images = imageio.volread(image_stack)
     shp = images.shape
-    test_images = images.reshape(shp[0]*shp[1]*shp[2], 1)
+    plchldr = 1
+    for i in range(len(shp)-1):
+        plchldr = shp[i] * plchldr
+    test_images = images.reshape(plchldr,shp[len(shp)-1])
 
     kmeans = load(model_file)
     outputs = kmeans.predict(test_images).reshape(shp[0], shp[1], shp[2])
