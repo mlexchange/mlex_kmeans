@@ -30,8 +30,11 @@ if __name__ == '__main__':
 
     images = np.array(images)
     shp = images.shape
+    plchldr = 1
     print(f'shape {shp}')
-    training_images = images.reshape(shp[0]*shp[1]*shp[2],1)
+    for i in range(len(shp)-1):
+        plchldr = shp[i] * plchldr
+    training_images = images.reshape(plchldr,shp[len(shp)-1])
 
         # Load training parameters
     if args.parameters is not None:
