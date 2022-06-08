@@ -3,6 +3,7 @@ import numpy as np
 import pathlib
 import argparse
 import imageio
+import tifffile
 from joblib import load
 import json
 
@@ -37,5 +38,6 @@ if __name__ == '__main__':
         if index % parameters.show_progress == 0:
             output_f_name = output_dir / '{}-.dat'.format(index)
             np.savetxt(str(output_f_name), out)
-            imageio.imsave(str(output_dir / '{}-classified.tif'.format(index)), out)
+            out = (out*255).astype(np.uint8)
+            tifffile.imwrite(str(output_dir / '{}-classified.tif'.format(index)), out) 
             print('classified\t{}'.format(index), flush=True)
